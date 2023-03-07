@@ -28,12 +28,13 @@ const Home = () => {
 //Rendering se loading o fetch request
 if (isLoading){
     return(
-        <>
-            <p>Getting data from server!</p>
-            <AnimatedList>
+        
+            
+            <AnimatedList animation="zoom">
+                {Array(getRandomNumber(3, 10)).fill(<PostLoading />)}
             </AnimatedList>
         
-        </>
+        
     )
 }
 
@@ -64,16 +65,12 @@ return(
 //Rendering se tudo OK - existem posts no array, sem erros e não estamos em loading
 return(
 
-    <div className="body">
+    <div>
       
         {posts.map((post , index)=>{
-            <Post/>
+            <Post key={post.id} post={post} onToggleComments={onToggleComments(index)}/>
         })}
-        <p>
-          MAIN BODY
-        </p>
-
-      
+    
     </div>
 )
 
