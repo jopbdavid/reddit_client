@@ -2,10 +2,10 @@ import React from 'react';
 import moment from 'moment';
 import ReactMarkdown from 'react-markdown';
 import './Comment.css';
-import Avatar from '../Posts/Avatar';
+import {Avatar} from '../Posts/Avatar';
 
 
-const Comment = (props) => {
+export const Comment = (props) => {
     const { comment } = props; // descontrução do obj comment passado em props do elemento Post
 
     return (

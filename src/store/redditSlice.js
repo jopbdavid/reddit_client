@@ -1,5 +1,5 @@
 import { createSlice, createSelector } from "@reduxjs/toolkit";
-import { getSubredditPosts, getPostComments } from "../api/api";
+import { getSubRedditPosts, getPostComments } from "../api/api";
 
 
 //definição do state onde podemos a informação relevante do estado reddit
@@ -53,7 +53,7 @@ const redditSlice = createSlice({
             state.posts[action.payload.index].loadingComments = false;
             state.posts[action.payload.index].comments = action.payload.comments;
         },
-        getCommentsFailed (state) {
+        getCommentsFailed (state, action) {
             state.posts[action.payload].loadingComments = false;
             state.posts[action.payload].error = true;
             
@@ -83,7 +83,7 @@ export default redditSlice.reducer;
 export const fetchPosts = (subReddit) => async(dispatch) => {
     try{
         dispatch(startGetPosts());
-        const posts = await getSubredditPosts(subReddit);
+        const posts = await getSubRedditPosts(subReddit);
 
         const postsWithMetadata = posts.map((post) => ({
             ...post,
@@ -114,7 +114,7 @@ const selectSearchTerm = (state) => state.reddit.searchTerm;
 export const selectSelectedSubreddit = (state) => state.reddit.selectedSubreddit;
 export const selectFilteredPosts = createSelector([selectPosts, selectSearchTerm
 ], (posts, searchTerm) => {
-    if (searchTerm != "") {
+    if (searchTerm !== "") {
         return posts.filter((post) => 
             post.title.toLowerCase().includes(searchTerm.toLowerCase())
         );

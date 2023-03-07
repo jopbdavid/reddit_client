@@ -20,7 +20,7 @@ return(
       <h2>Subreddits</h2>
       <ul className="subreddits-list">
           {subreddits.map((subreddit) => {
-            <li key={subreddit.key}
+            return <li key={subreddit.key}
                 className={`${
                   selectedSubreddit === subreddit.url && `selected-subreddit`
                 }`}

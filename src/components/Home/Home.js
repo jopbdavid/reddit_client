@@ -3,8 +3,11 @@ import { AnimatedList } from "react-animated-list";
 import "./home.css";
 import { useDispatch, useSelector } from "react-redux" 
 import { fetchComments, fetchPosts, selectFilteredPosts, setSearchTerm } from "../../store/redditSlice";
+import {getRandomNumber} from "../../utils/getRandomNumber"
+import {PostLoading} from "../Posts/PostLoading";
+import {Post} from "../Posts/Post"
 
-const Home = () => {
+export const Home = () => {
     const reddit = useSelector((state) => state.reddit); //seletor para ir buscar o estado do reddit (definido no objeto redditSlice)
     const { isLoading, error, searchTerm, selectedSubreddit } = reddit; //descontrução do obj acima para utilização
     const posts = useSelector(selectFilteredPosts); //selector que vai buscar a informação da junção de dois seletores e dois estados (redditslice)
@@ -68,7 +71,7 @@ return(
     <div>
       
         {posts.map((post , index)=>{
-            <Post key={post.id} post={post} onToggleComments={onToggleComments(index)}/>
+            return <Post key={post.id} post={post} onToggleComments={onToggleComments(index)}/>
         })}
     
     </div>
@@ -78,4 +81,3 @@ return(
 
 }
 
-export default Home;

@@ -7,7 +7,7 @@ import {
   TiArrowDownOutline,
   TiMessage,
 } from 'react-icons/ti';
-import getRandomNumber from '../../utils/getRandomNumber';
+import {getRandomNumber} from '../../utils/getRandomNumber';
 
 export const PostLoading = () => {
 

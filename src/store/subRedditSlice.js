@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import {getSubReddits} from "../api/api";
 
 
@@ -10,7 +10,7 @@ const initialState = {
 
 const subRedditSlice = createSlice({
     name: "subreddits",
-    state: initialState,
+    initialState: initialState,
     reducers: {
         startGetSubreddits (state) {
             state.isLoading = true;

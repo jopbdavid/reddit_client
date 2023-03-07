@@ -2,11 +2,12 @@ import React from "react";
 import { Card } from "./Card";
 import { TiArrowDownOutline, TiArrowDownThick, TiArrowUpOutline, TiArrowUpThick, TiMessage } from "react-icons/ti";
 import Skeleton from 'react-loading-skeleton';
-import Comment from "../Comments/Comment";
+import {Comment} from "../Comments/Comment";
 import "./Post.css";
-import Avatar from './Avatar';
+import {Avatar} from './Avatar';
 import moment from 'moment';
 import shortenNumber from '../../utils/shortenNumber';
+import { useState } from "react";
 
 export const Post = (props) => {
     const { post, onToggleComments } = props; // descontrução dos props passados na página HOME quando há o rendering
